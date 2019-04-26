@@ -25,7 +25,7 @@ python3 server.py
 ```
 The server will run on port 5000 of the machine. If you do not want this server to be accessible publicly you will need to change the 'host' value that is displayed on the bottom of the server.py file.
 
-## Running the server using Docker
+## Running the server using Docker (ubuntu 16.04)
 You can also run the server in a docker by navigating to the 'suriflaska_docker' directory and executing:
 ```sh
 sudo docker build -t suriflaska .
