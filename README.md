@@ -33,7 +33,7 @@ sudo docker build -t suriflaska .
 
 And running the docker image with the following command, forwarding port 5000:
 ```sh
-docker run -p 5000:5000 suriflaska
+sudo docker run -p 5000:5000 suriflaska
 ```
 
 ## NOTE
