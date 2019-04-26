@@ -28,7 +28,7 @@ The server will run on port 5000 of the machine. If you do not want this server 
 ## Running the server using Docker
 You can also run the server in a docker by navigating to the 'suriflaska_docker' directory and executing:
 ```sh
-docker build -t suriflaska_complete .
+sudo docker build -t suriflaska .
 ```
 
 And running the docker image with the following command, forwarding port 5000:
