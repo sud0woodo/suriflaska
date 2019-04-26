@@ -1,0 +1,1 @@
+alert udp any any -> any 53 (msg:"Testing"; content:"google"; sid:31337; sid:1;)

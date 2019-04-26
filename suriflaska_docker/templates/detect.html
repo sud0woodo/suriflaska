@@ -1,0 +1,50 @@
+<html>
+
+  <style>
+    form {
+      margin: 0 20;
+      width: 1200px;
+      height: 500px;
+      padding: 1em;
+      border: 1px solid #CCC;
+      border-radius: 1em;
+    }
+    form div + div {
+      margin-top: 1em;
+    }
+    textarea {
+      width: 1000px;
+      border: 1px solid #999;
+      resize: none;
+    }
+    input:focus, textarea:focus {
+      border-color: #000;
+    }
+  </style>
+
+   <body>
+      <form action = "http://localhost:5000/" method = "POST" 
+         enctype = "multipart/form-data">
+         <h2>Suriflaska - rule testing for poor people</h2>
+         <div>
+            <textarea type="rule" name = "rule">alert udp any any -> any 53 (msg:"Testing"; content:"google"; sid:31337; rev:1;)</textarea>
+         </div>
+         <br><br>
+         <input type = "file" name = "file" />
+         <select name="listpcaps">
+            {% for value in listpcaps %}
+            <option value = "{{ value }}" selected>{{ value }}</option>
+            {% endfor %}
+          </select>
+         <br><br>
+         <input type = "submit"/>
+         <br><br>
+         <div>
+           {% autoescape false %}
+            Output:<br><br>{{ output }}
+           {% endautoescape %}
+        </div>
+      </form> 
+   </body>
+
+</html>
