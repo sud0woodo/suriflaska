@@ -85,7 +85,9 @@ def rule_testing():
             rule_file.close()
         # Return to template of page if it doesn't have the rule   
         else:
-            return render_template('detect.html', listpcaps=pcap_files) 
+            return render_template('detect.html', rule=rule, listpcaps=pcap_files) 
+        read_rule = open("rules/match.rules", "r")
+        rule = ''.join(read_rule.readlines())
 
         # Check if the POST request contains one of the selected options
         if request.form.get('listpcaps'):
@@ -93,7 +95,7 @@ def rule_testing():
             replay = suri_replay(file)
             # Clean up the created files
             os.system('rm log/fast.log && rm log/error.log')
-            return render_template('detect.html', output=replay, listpcaps=pcap_files)
+            return render_template('detect.html', rule=rule, output=replay, listpcaps=pcap_files)
         # Check if the POST request has the file part
         elif 'file' in request.files:
             file = request.files['file']
@@ -108,11 +110,13 @@ def rule_testing():
                     os.system('rm log/fast.log')
                 if os.path.isfile('log/error.log'):
                     os.system('rm log/error.log')
-                return render_template('detect.html', output=replay, listpcaps=pcap_files)
+                return render_template('detect.html', rule=rule, output=replay, listpcaps=pcap_files)
 
     # Do something with GET request
     else:
-        return render_template('detect.html', listpcaps=pcap_files)         
+        read_rule = open("rules/match.rules", "r")
+        rule = ''.join(read_rule.readlines())
+        return render_template('detect.html', rule=rule, listpcaps=pcap_files)         
 
 if __name__ == '__main__':
     app.run()
